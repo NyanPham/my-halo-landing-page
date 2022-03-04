@@ -54,15 +54,6 @@ function updateBlobs() {
 window.requestAnimationFrame(updateBlobs)
 
 
-// style the nav-link 
-navLinks.forEach(navLink => {
-    navLink.addEventListener('click', () => {
-        navLinks.forEach(navLink => {
-            navLink.classList.remove('active-nav')
-        })
-        navLink.classList.add('active-nav')
-    })
-})
 
 // style the active homepage-nav-link 
 homepageNavLinks.forEach(navLink => {

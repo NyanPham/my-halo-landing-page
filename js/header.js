@@ -3,10 +3,8 @@ const fixedHeaderElement = document.getElementById('fixed-header')
 
 
 export function activateBurgerClickEvent(burgerElements, navLinks) {
-
     window.addEventListener('click', (e) => {
         if (e.target.closest('[data-dropdown-burger]')) {
-            console.log('is dropdown burger')
             burgerElements.forEach(burger => {
                 burger.classList.toggle('active')
             })
@@ -19,10 +17,27 @@ export function activateBurgerClickEvent(burgerElements, navLinks) {
 
         }
     })
+
+    
+    // style the nav-link 
+    navLinks.forEach(navLink => {
+        navLink.addEventListener('click', () => {
+            navLinks.forEach(navLink => {
+                navLink.classList.remove('active-nav')
+            })
+            const navLinkData = navLink.dataset.navLink
+            const relevantNavlinks = [...navLinks].filter(navLink => navLink.dataset.navLink === navLinkData)
+            relevantNavlinks.forEach(navLink => {
+                navLink.classList.add('active-nav')
+            })
+        })
+    })
     
     navLinks.forEach(navLink => {
         navLink.addEventListener('click', () => {
-            burger.classList.remove('active')
+            burgerElements.forEach(burger => {
+                burger.classList.remove('active')
+            })
             document.querySelector('[data-side-menu]').classList.remove('active')
         })
     })   
@@ -47,14 +62,13 @@ function activateHeaderWhenScroll() {
         if (!headerEntry.isIntersecting) {
             fixedHeaderElement.classList.add('visible')
             headerElement.querySelector('[data-dropdown-burger]').classList.remove('active')
+            fixedHeaderElement.querySelector('[data-dropdown-burger]').classList.remove('active')
             sideMenu.classList.remove('active')
-            sideMenu.querySelector('[data-dropdown-burger]').style.display = 'none'
         } else {
             fixedHeaderElement.classList.remove('visible')
             fixedHeaderElement.querySelector('[data-dropdown-burger]').classList.remove('active')
+            headerElement.querySelector('[data-dropdown-burger]').classList.remove('active')
             sideMenu.classList.remove('active')
-            sideMenu.querySelector('[data-dropdown-burger]').style.display = 'initial'
-
         }
     }, {
         threshold: 0.1,
