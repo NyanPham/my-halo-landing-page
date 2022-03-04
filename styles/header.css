@@ -116,11 +116,6 @@ header {
     background-color: var(--button-color);
 }
 
-.nav-links > li a:hover::after {
-    background-color: var(--button-color);
-}
-
-
 .log-and-buy {
     display: flex;
     align-items: center;
@@ -165,7 +160,7 @@ header {
     transform: translateY(-100%);
     pointer-events: none;
     transition: all 350ms ease-in-out;
-    padding: 25px 135px;
+    padding: 1rem 135px;
 }
 
 #fixed-header.visible {
@@ -180,7 +175,7 @@ header {
     }
 
     #fixed-header {
-        padding: 25px 50px;
+        padding: 1rem 50px;
     }
 }
 

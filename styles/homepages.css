@@ -6,7 +6,6 @@
     --underline-color: rgb(239, 176, 136);
 }
 
-
 .homepage-nav-links {
     display: flex;
     flex-wrap: wrap;
@@ -25,6 +24,12 @@
     cursor: pointer;
     text-decoration: none;
     color: var(--theme-color);
+
+    transition: color 250ms ease-in-out;
+}
+
+.homepage-nav-links > li a:hover {
+    color: var(--button-color);
 }
 
 .homepage-nav-links > li a.active-homepage-nav {
@@ -32,13 +37,20 @@
     position: relative;
 }
 
-.homepage-nav-links > li a.active-homepage-nav::after {
+.homepage-nav-links > li a::after {
     content: "";
     position: absolute;
     top: 125%;
     width: 120%;
     height: 3px;
     left: -10%;
+    background-color: white; 
+
+    transition: background-color 250ms ease-in-out;
+}
+
+
+.homepage-nav-links > li a.active-homepage-nav::after {
     background-color: var(--button-color);
 }
 
