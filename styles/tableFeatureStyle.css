@@ -202,13 +202,13 @@ tr {
 }
 
 .not-recommend-btn {
-    
-    color: white;
+    background-color: #edf2f7;
+    color: #2d3748;
     font-size: 16px;
 }
 
 .not-recommend-btn > .plus-through-text {
-    color: white;
+    color: #2d3748;
     font-size: 18px;
 }
 

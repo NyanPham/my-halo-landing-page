@@ -98,12 +98,9 @@
     height: 100%;
 }
 
-.blob-container-5 {
-    --x: 30;
-    --y: 0;
-    --posY: 150;
-    animation-duration: 30s;
-}
+/* .blob-container-5 {
+    z-index: 1;
+} */
 
 
 @media screen and (max-width: 1550px) {

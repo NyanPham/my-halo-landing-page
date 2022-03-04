@@ -3,7 +3,7 @@ const slidersContainer = document.querySelector('[data-store-showcase]')
 export const sliders = document.querySelectorAll('[data-slider]')
 export const inViewSliders = []
 
-export const observer = new IntersectionObserver(entries => {
+export const slideUpObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             if (inViewSliders.includes(entry.target)) return
@@ -14,7 +14,7 @@ export const observer = new IntersectionObserver(entries => {
             inViewSliders.splice(index, 1)
         }
     })
-    checkSliders(sliders, inViewSliders)
+    checkSlidersScrolling(sliders, inViewSliders)
 }, {
     threshold: 0.4,
     rootMargin: '0px'
@@ -26,7 +26,7 @@ let firstInView
 const emptyImage = document.createElement('img')
 
 
-export function checkSliders(sliders, inViewSliders) {
+export function checkSlidersScrolling(sliders, inViewSliders) {
     const reorderedInViewSliders = [...sliders].filter(slider => {
         if (inViewSliders.includes(slider)) return slider
     })
@@ -40,7 +40,6 @@ export function checkSliders(sliders, inViewSliders) {
         } else {
             slider.classList.remove('slide-up')
         }
-        
     })
     firstInView = reorderedInViewSliders[0]
 }
@@ -55,7 +54,8 @@ slidersContainer.addEventListener('dragover', e => {
     const delta = e.clientX - inititalMousePos
     slidersContainer.scrollTo(
        {
-           left: -delta
+           left: -delta,
+           behavior: 'smooth'
        }
     )
 })
@@ -65,11 +65,65 @@ slidersContainer.addEventListener('dragleave', () => {
     const containerRect = slidersContainer.getBoundingClientRect()
     const delta = firstViewRect.left - containerRect.left
 
-    slidersContainer.scrollBy({
-        left: delta,
-        behavior: 'smooth'
-    })
+    scrollBy(slidersContainer, delta)
 })
 
 
 
+let interval
+let isMouseOut = true
+
+const autoSliderObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting && isMouseOut) {
+        interval = setInterval(() => {
+            scrollOneStep()
+        }, 3000)
+        entries[0].target.dataset.autoValid = true
+    } else {
+        clearTimeout(interval)
+        entries[0].target.dataset.autoValid = false
+    }
+})
+
+slidersContainer.addEventListener('mouseenter', () => {
+    isMouseOut = false
+    clearInterval(interval)
+})
+
+slidersContainer.addEventListener('mouseleave', () => {
+    isMouseOut = true
+    if (slidersContainer.dataset.autoValid) 
+    interval = setInterval(() => {
+        scrollOneStep()
+    }, 3000)
+})
+
+
+export function activateFooterAutoScroll() {
+    autoSliderObserver.observe(slidersContainer)
+}
+
+function scrollOneStep() {
+    const sliders = [...slidersContainer.querySelectorAll('[data-slider]')]
+    const closestSlider = sliders.reduce((closest, slider) => {
+        const box = slider.getBoundingClientRect()
+        if (slider.offsetLeft > slidersContainer.scrollLeft && slider.offsetLeft < closest.offset) {
+            return { offset: slider.offsetLeft, element: slider}
+        } else {
+            return closest
+        }
+    }, {offset: Number.POSITIVE_INFINITY, element: sliders[0]}).element
+    const index = sliders.indexOf(closestSlider)
+    const nextSlider = sliders[index + 1]
+    if (!nextSlider) return
+    const delta = nextSlider.getBoundingClientRect().left - slidersContainer.getBoundingClientRect().left
+
+    scrollBy(slidersContainer, delta)
+}
+
+function scrollBy(element, span) {
+    element.scrollBy({
+        left: span,
+        behavior: 'smooth'
+    })
+}

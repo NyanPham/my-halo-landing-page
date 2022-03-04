@@ -5,10 +5,9 @@ import PAGE_DATA, { renderPages } from "./pagesCollection.js"
 import READY_DATA, { renderReadyCards } from "./readyToUse.js"
 import TABLE_FEATURES, { renderTable, resizeTable } from "./table.js"
 import { styleActiveDots } from "./activeDotsPagination.js"
-import { sliders, observer, checkSliders, inViewSliders } from "./sliders.js"
+import { sliders, slideUpObserver, checkSlidersScrolling, inViewSliders, activateFooterAutoScroll } from "./sliders.js"
 import { scrollWhenHover } from "./pageHover.js"
 import { activateBurgerClickEvent } from "./header.js"
-import { activateFooterAutoScroll  } from "./footerSlider.js"
 
 const featureContainer = document.getElementById('features-container')
 const homepagesContainer = document.getElementById('homepages-container')
@@ -41,7 +40,7 @@ window.addEventListener('resize', resizeTable)
 
 // move blobs
 const blobs = [...blobElements].map(blobElement => {
-    return new Blob(blobElement, randomFromMinMax(0, 70), randomFromMinMax(0, 70), randomFromMinMax(-360, 360))
+    return new Blob(blobElement, randomFromMinMax(-20, 70), randomFromMinMax(-20, 70), randomFromMinMax(-360, 360))
 })
 
 function updateBlobs() {
@@ -87,10 +86,10 @@ pageNavLinks.forEach(navLink => {
 
 //style the sliders
 
-checkSliders(sliders, inViewSliders)
+checkSlidersScrolling(sliders, inViewSliders)
 
 sliders.forEach(slider => {
-    observer.observe(slider)
+    slideUpObserver.observe(slider)
 })
 
 const homepageElements = document.querySelectorAll('[data-homepage]')

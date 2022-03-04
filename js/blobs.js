@@ -57,11 +57,11 @@ class Blob {
         const boxRect = this.blobElement.getBoundingClientRect()
         const playGroundRect = blobPlayground.getBoundingClientRect()
         
-        if (boxRect.bottom >= playGroundRect.bottom + 100 || boxRect.top <= playGroundRect.top - 100) {
+        if (boxRect.bottom >= playGroundRect.bottom + 150 || boxRect.top <= playGroundRect.top - 150) {
             this.direction.y *= -1
         }
 
-        if (boxRect.left <= playGroundRect.left - 100 || boxRect.right >= playGroundRect.right + 100) {
+        if (boxRect.left <= playGroundRect.left - 150 || boxRect.right >= playGroundRect.right + 150) {
             this.direction.x *= -1
         }
     }
