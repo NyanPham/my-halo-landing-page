@@ -47,26 +47,23 @@ class Blob {
 
 
         this.velocity = randomFromMinMax(0.1, 0.2)
-
     }
 
     updatePosition() {
-        // this.x = this.x + this.direction.x * this.velocity / 3
-        // this.y = this.y + this.direction.y * this.velocity / 3
-        // this.rotation += this.velocity
-
-        // const boxRect = this.blobElement.getBoundingClientRect()
-        // const playGroundRect = blobPlayground.getBoundingClientRect()
-        
-        // if (boxRect.bottom >= playGroundRect.bottom + 100 || boxRect.top <= playGroundRect.top - 100) {
-        //     this.direction.y *= -1
-        // }
-
-        // if (boxRect.left <= playGroundRect.left - 100 || boxRect.right >= playGroundRect.right + 100) {
-        //     this.direction.x *= -1
-        // }
+        this.x = this.x + this.direction.x * this.velocity / 3
+        this.y = this.y + this.direction.y * this.velocity / 3
         this.rotation += this.velocity
 
+        const boxRect = this.blobElement.getBoundingClientRect()
+        const playGroundRect = blobPlayground.getBoundingClientRect()
+        
+        if (boxRect.bottom >= playGroundRect.bottom + 100 || boxRect.top <= playGroundRect.top - 100) {
+            this.direction.y *= -1
+        }
+
+        if (boxRect.left <= playGroundRect.left - 100 || boxRect.right >= playGroundRect.right + 100) {
+            this.direction.x *= -1
+        }
     }
 }
 

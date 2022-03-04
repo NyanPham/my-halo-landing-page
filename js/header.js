@@ -43,7 +43,7 @@ function activateHeaderWhenScroll() {
     const headerObserver = new IntersectionObserver(entries => {
         const headerEntry = entries[0]
         const sideMenu = document.querySelector('[data-side-menu]')
-
+        
         if (!headerEntry.isIntersecting) {
             fixedHeaderElement.classList.add('visible')
             headerElement.querySelector('[data-dropdown-burger]').classList.remove('active')

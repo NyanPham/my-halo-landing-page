@@ -1,3 +1,4 @@
+import Blob, { randomFromMinMax } from "./blobs.js"
 import FEATURES, { renderFeatures } from "./haloFeatures.js"
 import HOMEPAGE_DATA, { renderHomepages } from "./homepage.js"
 import PAGE_DATA, { renderPages } from "./pagesCollection.js"
@@ -19,6 +20,7 @@ const readyContainer = document.getElementById('ready-cards-container')
 const multipleHeaderDots = document.querySelectorAll('[data-multiple-dot]')
 const multipleHeaderSliders = document.querySelectorAll('[data-multiple-slider]')
 const featureTableElement = document.querySelector('[data-feature-table]')
+const blobElements = document.querySelectorAll('[data-blob]')
 const burgerElements = document.querySelectorAll('[data-dropdown-burger]')
 const navLinks = document.querySelectorAll('[data-nav-link]')
 
@@ -38,6 +40,20 @@ resizeTable()
 window.addEventListener('resize', resizeTable)
 
 // move blobs
+const blobs = [...blobElements].map(blobElement => {
+    return new Blob(blobElement, randomFromMinMax(0, 70), randomFromMinMax(0, 70), randomFromMinMax(-360, 360))
+})
+
+function updateBlobs() {
+    blobs.forEach(blob => {
+        blob.updatePosition()
+    })
+    window.requestAnimationFrame(updateBlobs)
+
+}
+
+window.requestAnimationFrame(updateBlobs)
+
 
 // style the nav-link 
 navLinks.forEach(navLink => {

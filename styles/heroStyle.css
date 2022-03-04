@@ -112,35 +112,13 @@
 .blob-container {
     --x: 0;
     --y: 0;
-    width: 1277px;
-    height: 1113px;
+    --rotation: 35;
+    width: 70vw;
+    height: 70vw;
     z-index: -1; 
     position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateY(calc(var(--y) * 1%)) translateX(calc(var(--x) * 1%));
-}
-
-.blob-container-1 {
-    --x: -30;
-    --y: 15;
-}
-
-.blob-container-2 {
-    --x: 50;
-    --y: -30;
-    --posY: -100;
-}
-
-.blob-container-3 {
-    --x: 15;
-    --y: 25;
-    --posY: 300;
-}
-
-.blob-container-4 {
-    --x: 90;
-    --y: 5;
+    top: calc(var(--y) * 1%);
+    left: calc(var(--x) * 1%);
 }
 
 .blob {
@@ -148,26 +126,8 @@
     max-height: 100%;
     border: none;
     opacity: 0.3;
-    transform-origin: center;
-    animation: blobSpin infinite linear;
+    transform: rotate(calc(var(--rotation) * 1deg));
 }
-
-.blob-1 {
-    animation-duration: 10s;
-}
-
-.blob-2 {
-    animation-duration: 50s;
-}
-
-.blob-3 {
-    animation-duration: 42s;
-}
-
-.blob-4 {
-    animation-duration: 27s;
-}
-
 
 .landing-text {
     margin-top: 453px;
