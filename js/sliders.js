@@ -55,7 +55,6 @@ slidersContainer.addEventListener('dragover', e => {
     slidersContainer.scrollTo(
        {
            left: -delta,
-           behavior: 'smooth'
        }
     )
 })
