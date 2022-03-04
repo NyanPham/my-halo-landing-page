@@ -1,0 +1,266 @@
+.one-time-purchase {
+    text-align: center;
+    margin-top: 138px;
+}
+
+.one-time-purchase-title {
+    font-size: 48px;
+    color: var(--theme-color);
+    position: relative;
+    width: max-content;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 36px;
+    font-weight: bold;
+}
+
+.one-time-purchase-title span {
+    position: relative;
+}
+
+.one-time-purchase-title span::after {
+    content: "";
+    position: absolute;
+    bottom: 10%;
+    left: -3%;
+    width: 106%;
+    height: 26px;
+    background-color: #fdf3c8;
+    z-index: -1;
+}
+
+.linethrough {
+    position: relative;
+    width: max-content;
+    color: #090336;
+}
+
+.linethrough::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -2.5%;
+    width: 105%;
+    height: 5px;
+    background-color: #ef7440;
+    transform: translateY(-50%);
+}
+
+.one-time-purchase-sub-text {
+    margin-top: 17px;
+    font-size: 16px !important;
+}
+
+.no-monthly-fee-text {
+    font-weight: 100;
+}
+
+table {
+    width: 969px;
+    height: 770px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 1rem;
+    border-collapse: collapse;
+    border: 1px solid #ececec;
+}
+
+table td + td {
+    border-left: 1px solid #ececec;
+}
+
+table td {
+    color: #8c919e;
+}
+
+table th {
+    border-bottom: 1px solid #ececec;
+    border-left: 1px solid #ececec;
+    color: var(--theme-color);
+}
+
+table th:first-child {
+    width: 428px;
+    height: 50px;
+}
+
+table th:nth-child(2) {
+    width: 270px;
+    height: 50px;
+}
+
+table th:nth-child(3) {
+    height: 50px;
+}
+
+tr {
+    height: 50px;
+    line-height: 28px;
+}
+
+.fee-row {
+    height: 120px;
+}
+
+.subdue-background, .view-more-row {
+    background-color: #f8f8f8;
+}
+
+.view-more-row {
+    cursor: pointer;
+
+    transition: 250ms ease-in-out;
+}
+
+.view-more-row > td {
+    color: #8c919e;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 250ms ease-in-out;
+}
+
+.view-more-row:hover {
+    background-color: lightgrey;
+}
+
+.view-more-row:hover > td {
+    color: #f8f8f8;
+}
+
+.theme-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.plus-through-text {
+    font-weight: bold;
+    color: #5c596f;
+    text-decoration: line-through;
+    font-weight: 700;
+}
+
+.button-container-cell {
+    padding: 15px;
+}
+
+.button-container-cell > button {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom right, #2419cd, #6a33f5);
+    border-radius: 0.5rem;
+    color: white;
+    line-height: 28px;
+    font-size: 16px;
+
+    transition: 250ms ease-in-out;
+}
+
+.button-container-cell > button:hover {
+    opacity: 0.7;
+}
+.button-container-cell > button > span {
+    font-size: 1.2em;
+}
+
+.button-container-cell {
+    font-weight: thin;
+}
+
+.price-39 {
+    font-weight: bold;
+}
+
+.only {
+    display: none;
+}
+
+.th {
+    height: 50px;
+}
+
+.table-buy-btns-grid {
+    width: 80vw;
+    display: none;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.table-buy-btns-grid > button {
+    width: 100%;
+    height: 70px;
+    border-radius: 0.5rem;
+    line-height: 26px;
+    transition: 250ms ease-in-out; 
+}
+
+.not-recommend-btn {
+    
+    color: white;
+    font-size: 16px;
+}
+
+.not-recommend-btn > .plus-through-text {
+    color: white;
+    font-size: 18px;
+}
+
+.recommend-btn {
+    background-image: linear-gradient(to bottom right, #2419cd, #6a33f5);
+    border-radius: 0.5rem;
+    color: white;
+    font-size: 16px;
+}
+
+.recommend-btn:hover, .not-recommend-btn:hover  {
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 1075px) {
+    table {
+        width: 80vw;
+        /* height: 770px; */
+    }
+
+    table th:first-child {
+        width: 50%;
+    }
+    
+    table th:nth-child(2) {
+        width: 25%;
+        height: 50px;
+    }
+    
+    table th:nth-child(3) {
+        height: 25%;
+    }
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .one-time-purchase-title {
+        font-size: 36px;
+    }
+
+    .fee-row {
+        display: none;
+    }
+
+    .table-buy-btns-grid {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .one-time-purchase-title {
+        font-size: 26px;
+    }
+}

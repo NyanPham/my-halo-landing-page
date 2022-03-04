@@ -1,0 +1,60 @@
+.most-compatible-apps {
+    text-align: center;
+    margin-top: 107px;
+}
+
+.most-compatible-apps-title::after {
+    --underline-color: #fad5c5;
+}
+
+.most-compatible-apps-sub-text {
+    margin-top: 28px;
+}
+
+.apps-grid {
+    margin-top: 55px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.app-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width:  370px;
+    height: max-content;
+    transition: transform 250ms ease;
+}
+
+.app-container:hover {
+    transform: scale(1.05);
+}
+
+.app-container > div {
+    text-align: left;
+    margin-top: 25px;
+}
+
+.app-container > div > h3 {
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.app-container > div > p {
+    color: var(--subdue-color);
+    font-size: 16px;
+    margin-top: 17px;
+}
+
+
+@media screen and (max-width: 1357px) {
+    .apps-grid {
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+    }
+    
+}
